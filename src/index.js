@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import 'typeface-lobster';
 import 'typeface-open-sans';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.css';
+import 'bootstrap-social/bootstrap-social.css';
 
 import reportWebVitals from './reportWebVitals';
 import App from './App';
