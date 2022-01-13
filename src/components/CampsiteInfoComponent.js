@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
     Form, FormGroup, Input, Label, Row, Col } from 'reactstrap'
 import { Link, NavLink } from 'react-router-dom';
 import { Control, LocalForm, Errors} from 'react-redux-form';
+import { baseUrl } from '../shared/baseUrl';
 
 import '../App.css';
 import { Loading } from './LoadingComponent';
@@ -117,7 +118,7 @@ function RenderCampsite({campsite}){
     return (
         <div className="col-md-5 m-1">
             <Card>
-                <CardImg top src={campsite.image} alt={campsite.name} />
+            <CardImg top src={baseUrl + campsite.image} alt={campsite.name} />
                 <CardBody>
                     <CardText>{campsite.description}</CardText>
                 </CardBody>
