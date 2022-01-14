@@ -85,6 +85,39 @@ export const addComment = comment => ({
     payload: comment
 });
 
+export const postFeedback = (firstName, lastName, phoneNum, email, agree, contactType, feedback) => dispatch => {
+
+    const myFeedback ={
+        firstName: firstName,
+        lastName: lastName,
+        phoneNum: phoneNum,
+        email: email,
+        agree: agree,
+        contactType: contactType,
+        feedback: feedback,
+    };
+
+    return fetch(baseUrl + 'feedback', {
+        method: "Post",
+        body: JSON.stringify(myFeedback),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Thank you for your feedback' + JSON.stringify(myFeedback));
+            console.log('Current State is: ');
+        } else {
+            const error = new Error(`Error ${response.status}: ${response.statusText}`);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => { throw error; }
+)
+
+}
 export const postComment = (campsiteId, rating, author, text) => dispatch => {
     
     const newComment = {

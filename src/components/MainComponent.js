@@ -11,8 +11,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
-import { postComment, fetchCampsites, fetchComments, fetchPromotions, addComment, fetchPartners } from '../redux/ActionCreators';
-
+import { postComment, postFeedback, fetchCampsites, fetchComments, fetchPromotions, addComment, fetchPartners } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -31,6 +30,7 @@ const mapDispatchToProps = {
   fetchPromotions: () => (fetchPromotions()),
   fetchPartners: () => (fetchPartners()),
   postComment: (campsiteId, rating, author, text) => (postComment(campsiteId, rating, author, text)),
+  postFeedback: (firstname, lastname, phoneNum, email, agree, contactType, feedback) => (postFeedback(firstname, lastname, phoneNum, email, agree, contactType, feedback)),
 };
 
 class Main extends Component {
@@ -87,7 +87,7 @@ render() {
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />} />
                     <Route path='/directory/:campsiteId' component={CampsiteWithId} />
-                    <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} /> } />
+                    <Route exact path='/contactus' render={() => <Contact postFeedback={this.props.postFeedback} resetFeedbackForm={this.props.resetFeedbackForm} /> } />
                     <Route exact path='/aboutus' render={() => <About partners={this.props.partners} /> } />
                     <Redirect to='/home' />
                 </Switch>
