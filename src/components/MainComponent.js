@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actions } from 'react-redux-form';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Directory from './DirectoryComponents';
 import CampsiteInfo from './CampsiteInfoComponent';
@@ -11,6 +12,7 @@ import Home from './HomeComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import { postComment, fetchCampsites, fetchComments, fetchPromotions, addComment, fetchPartners } from '../redux/ActionCreators';
+
 
 const mapStateToProps = state => {
   return {
@@ -79,14 +81,18 @@ render() {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path='/home' component={HomePage} />
-          <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />} />
-          <Route path='/directory/:campsiteId' component={CampsiteWithId} />
-          <Route exact path='/aboutus' component={AboutPage}/>
-          <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
-          <Redirect to='/home' />
-        </Switch>
+        <TransitionGroup>
+            <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                <Switch>
+                    <Route path='/home' component={HomePage} />
+                    <Route exact path='/directory' render={() => <Directory campsites={this.props.campsites} />} />
+                    <Route path='/directory/:campsiteId' component={CampsiteWithId} />
+                    <Route exact path='/contactus' render={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} /> } />
+                    <Route exact path='/aboutus' render={() => <About partners={this.props.partners} /> } />
+                    <Redirect to='/home' />
+                </Switch>
+            </CSSTransition>
+        </TransitionGroup>
         <Footer />
       </div>
     );
