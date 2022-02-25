@@ -1,4 +1,3 @@
-import { PARTNERS } from "../shared/partners";
 import * as ActionTypes from './ActionTypes';
 
 export const Partners = (state = {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, outline, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label, Row, Col } from 'reactstrap'
-import { Link, NavLink } from 'react-router-dom';
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody,
+Label } from 'reactstrap'
+import { Link} from 'react-router-dom';
 import { Control, LocalForm, Errors} from 'react-redux-form';
 import { baseUrl } from '../shared/baseUrl';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
@@ -80,7 +80,7 @@ class CommentForm extends Component {
                             </div>
                             <div clasName="form-group">
                                 <Label htmlFor="author">Your Name</Label>
-                                    <Control.text className="form-control" model=".author" name="author" name="author" 
+                                    <Control.text className="form-control" model=".author" name="author" 
                                         validators={{
                                             required, 
                                             minLength: minLength(2),

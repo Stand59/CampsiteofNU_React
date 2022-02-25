@@ -54,16 +54,11 @@ render() {
             promotionLoading={this.props.promotions.isLoading}
             promotionErrMess={this.props.promotions.errMess}
             partner={this.props.partners.partners.filter(partner => partner.featured)[0]}
+            partnersLoading={this.props.partners.isLoading}
+            partnersErrMess={this.props.partners.errMess}
         />
       );
   }
-    const AboutPage = () => {
-      return (
-        <About
-          partners={this.props.partners}
-        />
-      );
-    };
 
     const CampsiteWithId = ({match}) => {
       return (

@@ -1,0 +1,8 @@
+export const fetchPartners = () => dispatch => {
+
+    dispatch(partnersLoading());
+
+    setTimeout(() => {
+        dispatch(addPartners(PARTNERS));
+    }, 2000);
+};
